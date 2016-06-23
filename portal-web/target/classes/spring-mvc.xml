@@ -46,6 +46,8 @@
 	<mvc:default-servlet-handler/>
 	<!-- 扫描controller（controller层注入） -->
     <context:component-scan base-package="com.zqs.web"/> 
+    <!-- 注解配置 -->
+    <context:annotation-config/> 
     
     <!-- 避免IE在ajax请求时，返回json出现下载 -->
     <bean id="jacksonMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
@@ -96,7 +98,6 @@
         <property name="prefix" value="/WEB-INF/view/" />
         <property name="suffix" value=".jsp" />
     </bean>
-    
     <import resource="applicationContext.xml"/>
     
 </beans>
