@@ -60,6 +60,8 @@
         class="org.springframework.jdbc.datasource.DataSourceTransactionManager">  
         <property name="dataSource" ref="dataSource" />  
     </bean> 
+    <!-- ApplicationContextAware 依赖注入 -->
+   	<bean id="applicationContext" class="com.zqs.util.ApplicationContextHolder"/> 
     
     <!-- shiro 配置 -->
     <!-- 继承自AuthorizingRealm的自定义Realm,即指定Shiro验证用户登录的类为自定义的ShiroDbRealm.java -->  

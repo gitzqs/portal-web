@@ -26,6 +26,9 @@
 		<setting name="defaultStatementTimeout" value="25000" />
 	</settings>
 	<typeAliases>
-		 <typeAlias type="com.zqs.model.sys.member.SysMember" alias="sysMember"/> 
+		<!-- sys begin -->
+		<typeAlias type="com.zqs.model.sys.member.SysMember" alias="sysMember"/> 
+		<typeAlias type="com.zqs.model.sys.url.SysUrl" alias="sysUrl"/> 
+		<!-- sys end -->
 	</typeAliases>
 </configuration>

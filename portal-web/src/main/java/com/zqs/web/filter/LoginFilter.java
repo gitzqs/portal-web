@@ -14,22 +14,20 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.context.ApplicationContext;
-
 import com.alibaba.druid.util.DruidWebUtils;
 import com.alibaba.druid.util.PatternMatcher;
 import com.alibaba.druid.util.ServletPathMatcher;
 import com.zqs.model.sys.member.SysMember;
 import com.zqs.service.sys.ISysMemberService;
+import com.zqs.util.ApplicationContextHolder;
 
 public class LoginFilter implements Filter{
 
 	private static String NO_CHECK = "noCheck";
 	protected String contextPath;
 	private Set<String> patternSet;
-	protected PatternMatcher   pathMatcher             = new ServletPathMatcher();
+	protected PatternMatcher pathMatcher  = new ServletPathMatcher();
 	
-	private ApplicationContext applicationContext;
 	
 	@Override
 	public void init(FilterConfig arg0) throws ServletException {
@@ -54,7 +52,7 @@ public class LoginFilter implements Filter{
 		if(request.getSession().getAttribute("loginName") == null){
 			response.sendRedirect(request.getContextPath()+"/admin/login");
 		}else{
-			ISysMemberService sysMemberSercice = (ISysMemberService)applicationContext.getBean("sysMemberSercice");
+			ISysMemberService sysMemberSercice = (ISysMemberService)ApplicationContextHolder.getBean("sysMemberSercice");
 			SysMember sysMember = sysMemberSercice.loadByLoginName(request.getSession().getAttribute("loginName").toString());
 			if(sysMember == null){
 				response.sendRedirect(request.getContextPath()+"/admin/login");
