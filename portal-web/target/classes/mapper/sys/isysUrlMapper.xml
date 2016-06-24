@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zqs.dao.sys.url.ISysUrlMapper">
+	<resultMap id="sysUrlMap" type="sysUrl">
+		<id column="ID" property="id" jdbcType="DECIMAL"/>
+		<result column="NAME" property="name" jdbcType="VARCHAR"/>
+		<result column="URL" property="url" jdbcType="VARCHAR"/>
+		<result column="LEVEL" property="level" jdbcType="INTEGER"/>
+		<result column="HIGH_ID" property="highId" jdbcType="DECIMAL"/>
+	</resultMap>
+	
+	<sql id="base_column">
+		ID,NAME,URL,LEVEL,HIGH_ID
+	</sql>
+	
+	<!-- 无条件查询 begin -->
+	<select id="loadByLevel" parameterType="Integer" resultMap="sysUrlMap">
+		SELECT
+		<include refid="base_column"/>
+		FROM SYS_URL 
+		WHERE LEVEL = #{level}
+	</select>
+	<!-- 无条件查询 end -->
+	
+	<!-- 根据 high_id 查询 begin -->
+	<select id="loadByHighId" parameterType="Long" resultMap="sysUrlMap">
+		SELECT
+		<include refid="base_column"/>
+		FROM SYS_URL 
+		WHERE HIGH_ID = #{highId}
+	</select>
+	<!-- 根据high_id 查询 end -->
+</mapper>
