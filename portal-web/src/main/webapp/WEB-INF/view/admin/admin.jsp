@@ -11,7 +11,7 @@
 <script type="text/javascript" src="${ctx}/js/admin/menu.js"></script>
 <script type="text/javascript">
 	function changeRightDiv(){
-		$("#rightDiv").load("${ctx}/home/sys");
+		/* $("#rightDiv").load("${ctx}/home/sys"); */
 	}
 </script>
 </head>
@@ -33,7 +33,7 @@
 		<!-- 导航 end -->
 		<!-- 右边栏 begin -->
 		<div class="m-right" id="rightDiv">
-		<%-- <jsp:include page="/WEB-INF/view/admin/center/personal_profile.jsp" flush="true"/> --%>
+		<jsp:include page="/WEB-INF/view/admin/sys/sysUrl.jsp" flush="true"/>
 		</div>
 		<!-- 右边栏 end -->
 </div>

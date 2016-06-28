@@ -30,4 +30,39 @@
 		WHERE HIGH_ID = #{highId}
 	</select>
 	<!-- 根据high_id 查询 end -->
+	
+	<sql id="sql_where">
+		WHERE 1=1
+			<if test="name !=null and name !=''">
+				AND NAME = #{name}
+			</if>
+			<if test="level !=null and level !=''">
+				AND LEVEL = #{level}
+			</if>
+			<if test="highId !=null and highId !=''">
+				AND HIGH_ID = #{highId}
+			</if>
+	</sql>
+	
+	<!-- 分页查询 begin -->
+	<select id="page" parameterType="Map" resultType="Map">
+		SELECT
+		<include refid="base_column"/>
+		FROM SYS_URL
+		<include refid="sql_where"/>
+		ORDER BY ID
+		LIMIT #{offset},#{rows}
+	</select>
+	
+	<!-- total begin -->
+	<select id="total" parameterType="Map" resultType="Long">
+		SELECT COUNT(1) FROM(
+			SELECT
+			<include refid="base_column"/>
+			FROM SYS_URL
+			<include refid="sql_where"/>
+		)t
+	</select>
+	<!-- total end -->
+	<!-- 分页查询 end -->
 </mapper>
