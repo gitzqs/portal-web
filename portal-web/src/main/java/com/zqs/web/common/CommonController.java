@@ -19,7 +19,8 @@ public class CommonController {
 	
 	@RequestMapping(value="/bindData")
 	@ResponseBody
-	public String bindData(int pageNum,int pageSize){
+	public String bindData(int pageNum,int pageSize,String service){
+		
 		Map<String,Object> params = new HashMap<String,Object>();
 		params.put("offset", pageNum);
 		params.put("rows", pageSize);

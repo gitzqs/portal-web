@@ -47,10 +47,11 @@
 	<!-- 分页查询 begin -->
 	<select id="page" parameterType="Map" resultType="Map">
 		SELECT
-		<include refid="base_column"/>
-		FROM SYS_URL
+		s1.ID,s1.NAME,s1.URL,s1.LEVEL,s1.HIGH_ID,s2.NAME as HIGH_NAME
+		FROM SYS_URL s1
+		LEFT JOIN SYS_URL s2 ON s1.HIGH_ID = s2.id 
 		<include refid="sql_where"/>
-		ORDER BY ID
+		ORDER BY s1.ID
 		LIMIT #{offset},#{rows}
 	</select>
 	

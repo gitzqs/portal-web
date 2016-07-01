@@ -4,8 +4,16 @@
 <script type="text/javascript" src="${ctx}/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="${ctx}/js/common/commonPage.js"></script>
 <script type="text/javascript">
+	/* 数据展示*/
+	function showData(data){
+		var rows = data.rows;
+		$.each(rows,function(i,item){
+			$("#tbody_data").append("<tr class='gradeX warning'><td>"+item.NAME+"</td><td>"
+					+item.URL+"</td><td>"+item.LEVEL+"</td><td>"+item.HIGH_NAME+"</td></tr>");
+		});
+	}
 	$(function(){
-		bindData();
+		bindData(0,'sysUrlService');
 	});
 </script>
 <style type="text/css">
@@ -15,12 +23,20 @@
 		padding : 5px 10px;
 		float : left;
 		margin-right:5px;
+		text-decoration:none;
 	}
 	.pageBarNoSelect{
 		background : #ccc;
 		color : white;
 		padding : 5px 10px;
 		float : left;
+		margin-right:5px;
+		text-decoration:none;
+	}
+	.pageBarSpan{
+		float:left;
+		margin-top:5px;
+		margin-left:5px;
 		margin-right:5px;
 	}
 </style>
@@ -60,6 +76,7 @@
 											</tr>
 										</thead>
 										<tbody id="tbody_data">
+										
 										</tbody>
 										<tfoot id="load">
 											<tr>
