@@ -101,6 +101,20 @@
     	<url-pattern>/*</url-pattern>
     </filter-mapping>
     
+    <!-- 域名过滤器 -->
+    <filter>
+		<filter-name>domainFilter</filter-name>
+		<filter-class>com.zqs.web.filter.DomainFilter</filter-class>
+		<init-param>
+			<param-name>domain</param-name>
+			<param-value>www.zqs.com</param-value>
+		</init-param>   
+    </filter>
+    <filter-mapping>
+    	<filter-name>domainFilter</filter-name>
+    	<url-pattern>/*</url-pattern>
+    </filter-mapping>
+    
    
     
     <listener>

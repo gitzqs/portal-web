@@ -27,3 +27,11 @@ CREATE TABLE sys_url(
 	PRIMARY KEY (id),
 	UNIQUE KEY (name)
 )ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+DROP TABLE IF EXISTS domain_mapping;
+CREATE TABLE domain_mapping(
+	id bigint(19) NOT NULL AUTO_INCREMENT,
+	name varchar(50) COLLATE utf8_bin DEFAULT NULL,
+	customer_id bigint(19) NOT NULL ,
+	PRIMARY KEY(id),
+	UNIQUE KEY(name)
+)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin

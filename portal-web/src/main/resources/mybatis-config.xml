@@ -30,5 +30,9 @@
 		<typeAlias type="com.zqs.model.sys.member.SysMember" alias="sysMember"/> 
 		<typeAlias type="com.zqs.model.sys.url.SysUrl" alias="sysUrl"/> 
 		<!-- sys end -->
+		
+		<!-- domain begin -->
+		<typeAlias type="com.zqs.model.domain.DomainUrl" alias="domainUrl"/> 
+		<!-- domain end -->
 	</typeAliases>
 </configuration>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zqs.dao.domain.IDomainUrlMapper">
+	<resultMap type="domainUrl" id="domainUrlMap">
+		<id column="ID" property="id" jdbcType="DECIMAL"/>
+		<result column="NAME" property="name" jdbcType="VARCHAR"/>
+		<result column="CUSTOMER_ID" property="customerId" jdbcType="DECIMAL"/>
+	</resultMap>
+	
+	<sql id="base_column">
+		ID,NAME,CUSTOMER_ID
+	</sql>
+	
+	<!-- 根据域名查询 begin -->
+	<select id="loadByName" parameterType="String">
+		SELECT 
+		<include refid="base_column"/>
+		FROM DOMAIN_URL
+		WHERE NAME = #{name}
+	</select>
+	<!-- 根据域名查询 end -->
+</mapper>
