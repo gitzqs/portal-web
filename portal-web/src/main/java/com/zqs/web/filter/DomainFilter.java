@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.druid.util.StringUtils;
+import com.zqs.aop.dataSource.DBContextHolder;
 import com.zqs.model.domain.DomainUrl;
 import com.zqs.service.domain.IDomainUrlService;
 import com.zqs.util.ApplicationContextHolder;

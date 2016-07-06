@@ -34,5 +34,9 @@
 		<!-- domain begin -->
 		<typeAlias type="com.zqs.model.domain.DomainUrl" alias="domainUrl"/> 
 		<!-- domain end -->
+		
+		<!-- source begin -->
+		<typeAlias type="com.zqs.model.source.DataSource" alias="dataSource"/> 
+		<!-- source end -->
 	</typeAliases>
 </configuration>

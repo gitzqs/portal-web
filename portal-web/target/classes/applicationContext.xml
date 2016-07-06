@@ -16,7 +16,7 @@
     <context:property-placeholder location="classpath:jdbc.properties" ignore-unresolvable="true"/>  
   
     <!--创建jdbc数据源 -->  
-    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
+    <bean id="portal_1" class="com.alibaba.druid.pool.DruidDataSource"
     	init-method="init" destroy-method="close">  
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/> 
         <property name="url" value="jdbc:mysql://localhost:3306/portal_web"/>  
@@ -40,6 +40,43 @@
 	    <property name="poolPreparedStatements" value="true" />
 	    <property name="maxPoolPreparedStatementPerConnectionSize" value="50" />
         
+    </bean>
+    
+    <bean id="portal_2" class="com.alibaba.druid.pool.DruidDataSource"
+    	init-method="init" destroy-method="close">  
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/> 
+        <property name="url" value="jdbc:mysql://localhost:3306/portal_2"/>  
+        <property name="username" value="root"/>  
+        <property name="password" value="root"/>
+        <property name="filters" value="stat" />
+ 
+	    <property name="maxActive" value="20" />
+	    <property name="initialSize" value="1" />
+	    <property name="maxWait" value="60000" />
+	    <property name="minIdle" value="1" />
+	 
+	    <property name="timeBetweenEvictionRunsMillis" value="60000" />
+	    <property name="minEvictableIdleTimeMillis" value="300000" />
+	 
+	    <property name="validationQuery" value="SELECT 'x'" />
+	    <property name="testWhileIdle" value="true" />
+	    <property name="testOnBorrow" value="false" />
+	    <property name="testOnReturn" value="false" />
+	     
+	    <property name="poolPreparedStatements" value="true" />
+	    <property name="maxPoolPreparedStatementPerConnectionSize" value="50" />
+        
+    </bean>
+    
+    
+    <bean id="dataSource" class="com.zqs.aop.dataSource.DynamicDataSource">
+        <property name="targetDataSources">
+            <map key-type="java.lang.String">
+                <entry key="portal_1" value-ref="portal_1" />
+                <entry key="portal_2" value-ref="portal_2" />
+            </map>
+        </property>
+        <property name="defaultTargetDataSource" ref="portal_1" />
     </bean>
     
     <!-- 创建SqlSessionFactory，同时指定数据源 -->  
